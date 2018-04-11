@@ -55,7 +55,7 @@ static UIButton *detailsButton;
 }
 %new 
 - (void)handleTapGesture:(UITapGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateRecognized); {
+    (sender.state == UIGestureRecognizerStateRecognized); {
         [detailsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
