@@ -7,22 +7,22 @@
 @end
 
 @interface CKNavigationBarCanvasView : UIView
-@end 
+@end
 
 @interface CKAvatarNavigationBar : UIView
 @end
 
 @interface CKAvatarPickerViewController : UICollectionView
-@end 
+@end
 
 @interface CKBrowserSwitcherFooterView : UIView
 @end
 
 @interface _UIStatusBarStringView : UIView
-@end 
+@end
 
-@interface _UIStatusBar : UIView 
-@end 
+@interface _UIStatusBar : UIView
+@end
 
 @interface InfoBarWindows : UIWindow
 @end
@@ -38,10 +38,10 @@
 @end*/
 //Hook UIButton to open messages and make doubletapping UI do it instead
 static UIButton *detailsButton;
-%hook CKNavbarCanvasViewController 
+%hook CKNavbarCanvasViewController
 -(void)layoutSubviews {
     detailsButton = MSHookIvar<UIButton *>(self, "_detailsButton");
-    %orig; 
+    %orig;
 }
 %end
 
@@ -53,13 +53,13 @@ static UIButton *detailsButton;
     [tapGesture release];
     %orig;
 }
-%new 
+%new
 - (void)handleTapGesture:(UITapGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateRecognized); {
         [detailsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
-%end 
+%end
 
 
 //Changes iMessages name to Contacts Name
@@ -84,7 +84,7 @@ static UILabel *contactName;
     }
 }
 
-%end 
+%end
 //Hide Avatar in NavigationBar
 %hook CKAvatarNavigationBar
 -(void)layoutSubviews{
